@@ -10,6 +10,8 @@ Search.destroy_all
 Restaurant.destroy_all
 Favorite.destroy_all
 CartItem.destroy_all
+Item.destroy_all
+CartItem.destroy_all
 
 
 anya = User.create(name: 'Anya', email: 'anya.s.litvinova@gmail.com', password: "123456" )
@@ -29,5 +31,13 @@ puts 'restaurants created'
 fav1 = Favorite.create(user_id: anya.id, place_id: bakeri.id)
 puts 'fav created'
 
-# ci1 = CartItem.create(user_id:tania.id, item_id:'')
+baguette = Item.create(name: 'baguette', description: 'it/s delicious', price: 2, restaurant_id: ovenly.id, image_url: 'https://www.kingarthurflour.com/sites/default/files/styles/featured_image/public/recipe_legacy/8-3-large.jpg?itok=fRNQugY8')
+bagel = Item.create(name: 'bagel', description: 'it/s round', price: 1, restaurant_id: bakeri.id, image_url: 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-keto-bagels-horizontal-1543886484.jpg?crop=0.668xw:1.00xh;0.0969xw,0&resize=480:*')
+
+puts 'items created'
+
+ci1 = CartItem.create(user_id:tania.id, item_id:baguette.id)
+ci2 = CartItem.create(user_id:brian.id, item_id:bagel.id)
+
+puts 'CartItems created'
 
