@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	before_action :set_user, only: [:show, :update]
 
 	def index 
 		render json: User.all
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
 	
 	def set_user
 		@user = User.find(params[:id])
-		end
 	end
+end
 
 
