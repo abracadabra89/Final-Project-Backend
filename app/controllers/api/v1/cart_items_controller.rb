@@ -1,5 +1,5 @@
-class CartItemsController < ApplicationController
-before_action :find_cart_item, only: [:update, :destroy]
+class Api::V1::CartItemsController < ApplicationController
+	before_action :find_cart_item, only: [:update, :destroy]
 
 	def index
 		@user = User.find(params[:user_id])
@@ -31,7 +31,6 @@ before_action :find_cart_item, only: [:update, :destroy]
 		@cart_item.destroy
 		render json: @cart_item, status: :accepted
 	end
-end
 
 private
 

@@ -1,4 +1,5 @@
 class Api::V1::AuthController < ApplicationController
+	skip_before_action :authorized, only: [:create]
 	
 	def create
 		user = User.find_by(email: params[:email])
@@ -6,7 +7,7 @@ class Api::V1::AuthController < ApplicationController
 		  token = encoded_token(user)
 		  render json: {email: user.email, id: user.id, favorites: user.places, jwt: token}, status: 200
 		else
-		  render json: {error: 'Username or Password Invalid'}, status: 401
+		  render json: {error: 'Invalid Credentials'}, status: 401
 		end
 	  end
 	
