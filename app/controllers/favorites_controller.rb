@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
 	def create
 		if logged_in
 			place = Restaurant.find(params[:restaurant_id])
-			user = current
+			user = current_user
 			@favorite = Favorite.create(place: place, user: user)
 			if @favorite
 				render json: {id: place[:id], name: place[:name]}

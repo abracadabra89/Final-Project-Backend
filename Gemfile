@@ -25,6 +25,10 @@ gem 'rack-cors'
 gem 'figaro'
 gem 'active_model_serializers'
 gem 'jwt'
+gem 'pg'
+gem 'json'
+gem 'http'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

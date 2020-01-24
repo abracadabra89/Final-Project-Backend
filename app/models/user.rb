@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
+	validates :email,  uniqueness: { case_sensitive: false }
+
 	has_many :searches
 	has_many :cart_items
 	has_many :items, through: :cart_items

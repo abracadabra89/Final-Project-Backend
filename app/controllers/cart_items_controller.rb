@@ -1,4 +1,4 @@
-class Api::V1::CartItemsController < ApplicationController
+class CartItemsController < ActionController::API
 	before_action :find_cart_item, only: [:update, :destroy]
 
 	def index

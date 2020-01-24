@@ -1,6 +1,6 @@
-class Api::V1::ItemsController < ApplicationController
+class ItemsController < ApplicationController
 	before_action :find_item, only: [:show]
-	skip_before_action :authorized
+	#skip_before_action :authorized
 
     def index
       @items = Item.all
