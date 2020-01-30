@@ -1,20 +1,14 @@
 class Api::V1::AuthController < ApplicationController
-	#skip_before_action :authorized, only: [:create]
 
-	 
-
-  def create
-    @user = User.find_by(email: user_params[:email])
-    #User#authenticate comes from BCrypt
-    if @user && @user.authenticate(password: user_params[:password])
-      # encode token comes from ApplicationController
-      token = encode_token({ user_id: @user.id })
-      render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
+   def create
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      token = encoded_token(user)
+      render json: {email: user.email, id: user.id, favorites: user.places, jwt: token}, status: 200
     else
-      render json: { message: 'Invalid username or password' }, status: :unauthorized
+      render json: {error: 'Invalid credentials'}, status: 401
     end
   end
-
 
   def show
     if logged_in
@@ -24,10 +18,4 @@ class Api::V1::AuthController < ApplicationController
     end
   end
 
-private
-
-  def user_params
-    # params { user: {username: 'Chandler Bing', password: 'hi' } }
-    params.require(:user).permit(:email, :password)
-  end
 end
