@@ -1,15 +1,15 @@
 class ApplicationController < ActionController::API
-	
+
   def user_id
     decoded_token[0]['user_id']
   end
 
-  def current_user
+  def current_log
     @user ||= User.find_by(id: user_id)
   end
 
   def logged_in
-    !!current_user
+    !!current_log
   end
 
  def decoded_token
@@ -21,3 +21,4 @@ class ApplicationController < ActionController::API
  end
 
 end
+  

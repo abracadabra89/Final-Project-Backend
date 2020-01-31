@@ -21,9 +21,9 @@ class UsersController < ApplicationController
   def update
     if @user
       @user.update(password: params[:password])
-      render json: { msg: "Password Updated" }
+      render json: { msg: "Password Updated!" }
     else
-      render json: { msg: "Error" }
+      render json: { msg: "There was an Error" }
     end
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:email, :password)
+    params.require(:user).permit(:email, :password)
   end
 
   def set_user
