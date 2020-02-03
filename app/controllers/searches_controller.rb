@@ -11,10 +11,9 @@ class SearchesController < ApplicationController
 
   def create
     if logged_in
-      user = current_user
+      user = current_person
       @search = Search.create(term: params[:term], user: user)
       if @search
-        # results = @search.search(params[:term])
         render json: @search.businesses
 	  else
         render json: { errors: @search.errors.full_messages }

@@ -1,7 +1,7 @@
 require "json"
 require "http"
 
-API_KEY = ENV["API_KEY"]
+YELP_API = ENV["API"]
 
 
 
@@ -28,11 +28,11 @@ class Search < ApplicationRecord
 
     def business(business_id)
         url = "#{API_HOST}#{BUSINESS_PATH}#{business_id}"
-        response = HTTP.auth("Bearer #{API_KEY}").get(url)
+        response = HTTP.auth("Bearer #{YELP_API}").get(url)
         response.parse
     end
 
-    response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
+    response = HTTP.auth("Bearer #{YELP_API}").get(url, params: params)
     new_response = JSON.parse(response)
     arr = new_response["businesses"]
     arr.each do |rest|

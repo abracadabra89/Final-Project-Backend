@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
   def create
     if logged_in
       place = Business.find(params[:business_id])
-      user = current_user
+      user = current_person
       @favorite = Favorite.create(place: place, user: user)
       if @favorite
         render json: {id: place[:id], name: place[:name]}
