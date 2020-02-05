@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   
     def encoded_token(user)
-     JWT.encode({user_id: user.id}, ENV["KEY"], 'HS256')
+     JWT.encode({user_id: user.id}, 'my_s3cr3t', 'HS256')
     end
 
     def auth_header
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
 
 
     def decoded_token
-      JWT.decode(request.headers['Authorization'], ENV["KEY"], true, {algorithm: 'HS256'})
+      JWT.decode(request.headers['Authorization'], 'my_s3cr3t', true, {algorithm: 'HS256'})
     end
 
     def user_id

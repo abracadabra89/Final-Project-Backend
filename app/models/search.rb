@@ -1,7 +1,7 @@
 require "json"
 require "http"
 
-YELP_API = ENV["API_KEY"]
+YELP_API='k8oGjhhq9X5Lmj9opjoT63Hg5kGm9vP3v9REe4Ct2JDSUvcXkEf7PwUn1SWwg4yHbVIiAdkRVffdvxSSbH5SI2xP47iaRqYSN32vL51_PBPF7ItwLve4AY6qOaALXnYx'
 
 
 
@@ -16,7 +16,7 @@ SEARCH_LIMIT = 10
 class Search < ApplicationRecord
 	has_many :businesses
 	belongs_to :user
-    after_create :add_business
+  after_create :add_business
 
     def add_business(location=DEFAULT_LOCATION)
         url = "#{API_HOST}#{SEARCH_PATH}"
