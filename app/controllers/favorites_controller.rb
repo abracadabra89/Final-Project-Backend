@@ -4,10 +4,6 @@ class FavoritesController < ApplicationController
     render json: Favorite.all
   end
 
-  def show
-     render json: @user
-  end
-
 
   def create
     if logged_in
@@ -24,9 +20,18 @@ class FavoritesController < ApplicationController
     end
   end
 
-  def destroy
-    @favorite = Favorite.find(params[:id])
-    @favorite.destroy
+  
+  def show
+    favorite = Business.find(params[:id])
+    render json: favorite
   end
+
+
+  def destroy
+   @favorite = Business.find(params[:id])
+   @favorite.destroy
+   head :ok
+  end
+
 
 end
