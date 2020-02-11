@@ -26,11 +26,17 @@ class FavoritesController < ApplicationController
     render json: favorite
   end
 
+  def update
+    @favorite = Favorite.find(params[:id])
+    @favorite.update(params[:id])
+    render json: {id: place[:id], name: place[:name]} 
+  end
+
 
   def destroy
    @favorite = Business.find(params[:id])
    @favorite.destroy
-   head :ok
+   render body: nil, status: :no_content
   end
 
 
