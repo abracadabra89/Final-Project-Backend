@@ -21,13 +21,6 @@ class FavoritesController < ApplicationController
     end
   end
 
-  
-  # def show
-  #   @favorite = Business.find(params[:id])
-  #   render json: @favorite
-  # end
-
-
 
   def destroy
    @favorite = Business.find(params[:id])
