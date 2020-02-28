@@ -3,8 +3,6 @@ require "http"
 
 YELP_API='k8oGjhhq9X5Lmj9opjoT63Hg5kGm9vP3v9REe4Ct2JDSUvcXkEf7PwUn1SWwg4yHbVIiAdkRVffdvxSSbH5SI2xP47iaRqYSN32vL51_PBPF7ItwLve4AY6qOaALXnYx'
 
-
-
 API_HOST =  "https://api.yelp.com"
 BUSINESS_PATH = "/v3/businesses/" 
 SEARCH_PATH = "/v3/businesses/search"

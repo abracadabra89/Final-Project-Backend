@@ -22,6 +22,5 @@ class SearchesController < ApplicationController
       render json: { errors: "Not logged in" }
     end
   end
-
-
+  
 end

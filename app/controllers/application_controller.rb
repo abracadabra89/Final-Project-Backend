@@ -16,7 +16,6 @@ class ApplicationController < ActionController::API
       !!current_person
     end
 
-
     def decoded_token
       JWT.decode(request.headers['Authorization'], 'my_s3cr3t', true, {algorithm: 'HS256'})
     end
@@ -24,8 +23,6 @@ class ApplicationController < ActionController::API
     def user_id
       decoded_token[0]['user_id']
     end
-
-  
 
 end
   
