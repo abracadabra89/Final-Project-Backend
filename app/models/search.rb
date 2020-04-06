@@ -27,10 +27,11 @@ class Search < ApplicationRecord
         new_response = JSON.parse(response)
         arr = new_response["businesses"]
         arr.each do |rest|
+            deliver = rest["transactions"].include?("delivery")
             address = rest["location"]["display_address"].join(", ")
             coordinates = rest["coordinates"]
             search = self
-            Business.create(business_id: rest["id"], name: rest["name"], image_url: rest["image_url"], address: address, latitude: rest["coordinates"]["latitude"], longitude: rest["coordinates"]["longitude"], search: search)
+            Business.create(business_id: rest["id"], name: rest["name"], image_url: rest["image_url"], address: address, closed: rest["closed"], url: rest["url"], reviews: rest["review_count"], rating: rest["rating"], deliver: deliver, price: rest["price"], latitude: rest["coordinates"]["latitude"], longitude: rest["coordinates"]["longitude"], search: search)
     end
   end
 end
